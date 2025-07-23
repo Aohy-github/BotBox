@@ -15,20 +15,35 @@
         </li>
 
       </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-            Self massage
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">setting</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-
+      
+        <ul class="navbar-nav" v-if="$store.state.user.is_login">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+              {{ $store.state.user.username }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><router-link :to="{name : 'user_account_bot'}" class="dropdown-item">My Bot</router-link></li>
+              <li><a class="dropdown-item" href="#" @click="logout">login out </a></li>
+              <!-- <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        
+        <ul class="navbar-nav" v-else>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+              Self massage
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><router-link :to="{name : 'user_account_login'}" class="dropdown-item">login</router-link></li>
+              <li><router-link :to="{name : 'user_account_register'}" class="dropdown-item">register</router-link></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      
     </div>
   </div>
 </nav>
@@ -38,15 +53,23 @@
 <script>
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
-
+import { useStore } from 'vuex';
 export default{
     setup(){
+        const store = useStore();
         const route = useRoute();
+      
+        console.log(store.state.user.is_login)
         let route_name = computed(() =>{
             return route.name;
         })
+
+        const logout = () =>{
+          store.dispatch("logout")
+        }
         return {
-            route_name
+            route_name,
+            logout,
         };
     }
 }

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BotInfoController {
 
 
-    @RequestMapping("index/")
+//    @RequestMapping("index/")
     public String index(){ return "pk/index.html"; }
 }
