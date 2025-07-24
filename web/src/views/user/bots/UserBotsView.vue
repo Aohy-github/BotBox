@@ -1,7 +1,7 @@
 <template>
     <div class="container text-center">
         <div class="row">
-            <div class="col-3 border">
+            <div class="col-3">
                 <div class="card" style="margin-top: 20px;">
                     <img v-bind:src="$store.state.user.photo" class="card-img-top" alt="..." @error="error_photo">
                     <div class="card-body">
@@ -10,7 +10,7 @@
                     
                     </div>
                 </div>
-            <div class="col-9 border">
+            <div class="col-9">
                 <div class="card" style="margin-top: 20px;">
                     <div class="card-header"> 
                         <span style="font-size: 140%;">
@@ -196,9 +196,11 @@ import { Modal } from 'bootstrap/dist/js/bootstrap'
 import $ from 'jquery'
 import { VAceEditor } from 'vue3-ace-editor';  // 代码编辑框的依赖
 
+
 import 'ace-builds/src-noconflict/ace';
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/theme-textmate';
+// npm install --save-dev file-loader
 import "ace-builds/webpack-resolver";
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-chrome';

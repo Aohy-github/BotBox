@@ -2,8 +2,6 @@ package com.kob.backend.service.impl.user.bot;
 
 import com.kob.backend.mapper.BotMapper;
 import com.kob.backend.pojo.Bot;
-import com.kob.backend.pojo.User;
-import com.kob.backend.service.impl.utils.GetUserMessage;
 import com.kob.backend.service.user.bot.addBotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

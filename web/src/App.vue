@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-/* body{
-  background-image: url("@/assets/Snipaste_2023-08-04_16-32-22.png");
-} */
+body{
+  background-image: url('./assets/images/Snipaste_2023-08-04_16-32-22.png');
+}
 </style>

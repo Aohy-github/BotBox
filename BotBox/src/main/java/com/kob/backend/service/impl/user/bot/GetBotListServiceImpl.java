@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kob.backend.mapper.BotMapper;
 import com.kob.backend.pojo.Bot;
-import com.kob.backend.pojo.User;
-import com.kob.backend.service.impl.utils.GetUserMessage;
 import com.kob.backend.service.user.bot.getBotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

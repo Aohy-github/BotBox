@@ -3,8 +3,6 @@ package com.kob.backend.service.impl.user.bot;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.kob.backend.mapper.BotMapper;
 import com.kob.backend.pojo.Bot;
-import com.kob.backend.pojo.User;
-import com.kob.backend.service.impl.utils.GetUserMessage;
 import com.kob.backend.service.user.bot.removeBotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +19,6 @@ public class RemoveBotServiceImpl implements removeBotService {
     private BotMapper botMapper;
 
 
-    @Autowired
-    GetUserMessage getUserMessage;
     @Override
     public Map<String, String> removeBot(Map<String, String> params) {
         Map<String, String> resp = new HashMap<>();

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GetUserMessage {
     public User getUser(){
-        // 先查询当前登录的用户
+        // 先查询当前登录的用户, 这里是从请求头中自动获取计算。
         UsernamePasswordAuthenticationToken token =
                 (UsernamePasswordAuthenticationToken) SecurityContextHolder
                         .getContext()

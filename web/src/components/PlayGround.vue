@@ -16,7 +16,6 @@ export default {
 
 <style scoped>
 div.playground{
-    background: aqua;
     widows: 70vw;
     height: 70vh;
 }

@@ -3,12 +3,14 @@ package com.kob.backend.Aspect;
 
 import com.kob.backend.pojo.User;
 import com.kob.backend.service.impl.utils.GetUserMessage;
-import org.aspectj.lang.JoinPoint;
+import com.mysql.cj.Session;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
+import java.util.List;
 import java.util.Map;
 
 @Aspect
@@ -21,6 +23,8 @@ public class TokenValidationAspect {
     @Pointcut("execution(public * com.kob.backend.service.impl.user.bot..*(..))")
     public void userAccountServiceAspect() {}
 
+    @Pointcut("execution(public * com.kob.backend.consumer..*(..))")
+    public void webSocketServerAspect() {}
 ////    @Before("userAccountServiceAspect || ")
 //    @Before("userAccountServiceAspect()")
 //    public void validateToken(JoinPoint joinPoint) {
@@ -40,7 +44,6 @@ public class TokenValidationAspect {
         Object[] args = joinPoint.getArgs();
         if(args.length > 0 && args[0] instanceof Map){
             Map<String,String> params = (Map<String,String>) args[0];
-
             params.put("userId", one.getId().toString());
         }
         // 执行目标方法
@@ -51,4 +54,22 @@ public class TokenValidationAspect {
 
         return result;  // 返回目标方法的执行结果
     }
+
+
+//    @Around("webSocketServerAspect()")
+//    public Object aroundWeb(ProceedingJoinPoint joinPoint) throws Throwable{
+//        System.out.println("web around userAccountServiceAspect");
+//
+//        Object[] args = joinPoint.getArgs();
+//        if(args.length > 0){
+//            for(int i =0 ;i<args.length;i++){
+//                if(args[i] instanceof Session){
+//                    Session  session = (Session) args[i];
+//                    System.out.println(session);
+//                }else if(args[i] instanceof String){
+//                    System.out.println("token :" + args[i]);
+//                }
+//            }
+//        }
+//    }
 }
