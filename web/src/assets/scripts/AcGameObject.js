@@ -47,7 +47,7 @@ const step = timestamp => {
         }
     }
 
-     last_timestamp = timestamp;
+    last_timestamp = timestamp;
     requestAnimationFrame(step);
 }
 

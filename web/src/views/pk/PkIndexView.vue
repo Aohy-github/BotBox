@@ -37,7 +37,7 @@ export default{
             }
             
             socket.onmessage = msg =>{
-                console.log(msg)
+                // console.log(msg)
                 const data = JSON.parse(msg.data);
                 if(data.event === "success"){ // 匹配成功
 
@@ -47,15 +47,33 @@ export default{
                         photo:data.opponent_photo
                     })
 
-                    store.commit("updateGameMap", {
-                        g:data.gamemap
-                    })
+                    store.commit("updateGame", data.game)
                     setTimeout(() =>{
                         //切换对战状态
                         //store.state.pk.status = "playing"
                         store.commit("updateStatus","playing");
-                    }, 2000)
+                    }, 200)
+                }else if(data.event === "move"){
+                    const game = store.state.pk.gameObject;
+                    if(game === null){
+                        console.log("game null,no snake")
+                        return;
+                    }
+                    const [snake0, snake1] = game.snakes;
+                    console.log(data)
                     
+                    if(data.a_direction >=0 ){
+                        console.log("data.a_direction : " + data.a_direction)
+                        snake0.set_direction(data.a_direction)
+                        snake0.next_step();
+                    }
+                    if(data.b_direction >=0){
+                        console.log("data.b_direction : " + data.b_direction)
+                        snake1.set_direction(data.b_direction)
+                        snake1.next_step();
+                    }
+                }else if(data.event === "result"){
+                    console.log(data.event) ;
                 }
             }
 
